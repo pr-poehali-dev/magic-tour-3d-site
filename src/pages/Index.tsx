@@ -183,19 +183,15 @@ const Index = () => {
   return (
     <div className="min-h-screen relative">
       <div className="fixed inset-0 -z-10">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover opacity-20"
-          poster="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/f5b9735e-a44b-4aee-8404-b64f160bf0aa.jpg"
-        >
-          <source src="https://cdn.pixabay.com/video/2022/11/07/138619-768980873_large.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95" />
+        <div 
+          className="w-full h-full bg-cover bg-center bg-fixed"
+          style={{
+            backgroundImage: 'url(https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/d7c26a3c-e587-4d48-a57e-6cff97e16cd9.jpg)'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
       </div>
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg z-50 border-b border-border">
+      <nav className="fixed top-0 w-full bg-black/40 backdrop-blur-lg z-50 border-b border-white/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
@@ -213,7 +209,7 @@ const Index = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`font-semibold transition-all duration-300 hover:text-primary ${
-                    activeSection === item.id ? 'text-primary' : 'text-foreground/70'
+                    activeSection === item.id ? 'text-primary' : 'text-white/90'
                   }`}
                 >
                   {item.label}
