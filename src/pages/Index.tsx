@@ -253,21 +253,21 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mt-20 animate-fade-in-up">
-            <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <Card className="border-2 hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-slate-900/80 backdrop-blur-sm">
               <CardContent className="p-6 text-center">
                 <div className="text-4xl mb-4">⭐</div>
                 <h3 className="text-xl font-bold mb-2">20+ лет опыта</h3>
                 <p className="text-foreground/70">Профессионалы туристического бизнеса</p>
               </CardContent>
             </Card>
-            <Card className="border-2 hover:border-secondary transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <Card className="border-2 hover:border-secondary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-slate-900/80 backdrop-blur-sm">
               <CardContent className="p-6 text-center">
                 <div className="text-4xl mb-4">🎯</div>
                 <h3 className="text-xl font-bold mb-2">Индивидуальный подход</h3>
                 <p className="text-foreground/70">Туры под ваши пожелания</p>
               </CardContent>
             </Card>
-            <Card className="border-2 hover:border-accent transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <Card className="border-2 hover:border-accent transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-slate-900/80 backdrop-blur-sm">
               <CardContent className="p-6 text-center">
                 <div className="text-4xl mb-4">🛡️</div>
                 <h3 className="text-xl font-bold mb-2">Безопасность</h3>
@@ -288,7 +288,7 @@ const Index = () => {
             {tours.map((tour, index) => (
               <Card
                 key={index}
-                className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary cursor-pointer animate-scale-in"
+                className="group hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 hover:border-primary cursor-pointer animate-scale-in bg-slate-900/80 backdrop-blur-sm"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className={`h-2 bg-gradient-to-r ${tour.gradient}`} />
@@ -365,7 +365,7 @@ const Index = () => {
             {reviews.map((review, index) => (
               <Card
                 key={index}
-                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in bg-slate-900/80 backdrop-blur-sm"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <CardContent className="p-6">
@@ -389,7 +389,7 @@ const Index = () => {
           <p className="text-center text-foreground/70 text-lg mb-12">
             Свяжитесь с нами для подбора идеального тура
           </p>
-          <Card className="border-2">
+          <Card className="border-2 bg-slate-900/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-6">
