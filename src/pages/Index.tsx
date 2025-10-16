@@ -1,12 +1,28 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    tourType: '',
+    people: '',
+    date: '',
+    message: ''
+  });
+  const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +50,39 @@ const Index = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleBookingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.phone || !formData.tourType) {
+      toast({
+        title: 'Ошибка',
+        description: 'Заполните обязательные поля',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    toast({
+      title: 'Заявка отправлена!',
+      description: 'Елена свяжется с вами в ближайшее время',
+    });
+
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
+      tourType: '',
+      people: '',
+      date: '',
+      message: ''
+    });
+    setIsBookingOpen(false);
   };
 
   const tours = [
@@ -227,9 +276,15 @@ const Index = () => {
                   </div>
                   <h3 className="text-2xl font-bold mb-3">{tour.title}</h3>
                   <p className="text-foreground/70 mb-4">{tour.description}</p>
-                  <Button className={`w-full bg-gradient-to-r ${tour.gradient} hover:opacity-90`}>
-                    Узнать больше
-                    <Icon name="ArrowRight" className="ml-2" size={16} />
+                  <Button 
+                    className={`w-full bg-gradient-to-r ${tour.gradient} hover:opacity-90`}
+                    onClick={() => {
+                      setFormData(prev => ({ ...prev, tourType: tour.title }));
+                      setIsBookingOpen(true);
+                    }}
+                  >
+                    Забронировать
+                    <Icon name="Calendar" className="ml-2" size={16} />
                   </Button>
                 </CardContent>
               </Card>
@@ -375,6 +430,111 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">Забронировать тур</DialogTitle>
+          </DialogHeader>
+          <form onSubmit={handleBookingSubmit} className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Ваше имя *</Label>
+                <Input
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  placeholder="Иван Иванов"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone">Телефон *</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  placeholder="+7 (900) 123-45-67"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
+                placeholder="ivan@example.com"
+              />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="tourType">Тип тура *</Label>
+                <Select value={formData.tourType} onValueChange={(value) => handleInputChange('tourType', value)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Выберите тур" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Рафтинг">Рафтинг</SelectItem>
+                    <SelectItem value="Воздушный шар">Воздушный шар</SelectItem>
+                    <SelectItem value="Конные прогулки">Конные прогулки</SelectItem>
+                    <SelectItem value="Сплав">Сплав</SelectItem>
+                    <SelectItem value="Треккинг">Треккинг</SelectItem>
+                    <SelectItem value="Экскурсии">Экскурсии</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="people">Количество человек</Label>
+                <Input
+                  id="people"
+                  type="number"
+                  min="1"
+                  value={formData.people}
+                  onChange={(e) => handleInputChange('people', e.target.value)}
+                  placeholder="2"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="date">Желаемая дата</Label>
+              <Input
+                id="date"
+                type="date"
+                value={formData.date}
+                onChange={(e) => handleInputChange('date', e.target.value)}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="message">Дополнительная информация</Label>
+              <Textarea
+                id="message"
+                value={formData.message}
+                onChange={(e) => handleInputChange('message', e.target.value)}
+                placeholder="Расскажите о ваших пожеланиях..."
+                rows={4}
+              />
+            </div>
+
+            <div className="flex gap-3 pt-4">
+              <Button type="submit" className="flex-1 bg-gradient-to-r from-primary to-secondary">
+                <Icon name="Send" className="mr-2" size={18} />
+                Отправить заявку
+              </Button>
+              <Button type="button" variant="outline" onClick={() => setIsBookingOpen(false)}>
+                Отмена
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
