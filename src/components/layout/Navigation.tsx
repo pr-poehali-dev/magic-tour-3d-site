@@ -31,12 +31,15 @@ const Navigation = ({ activeSection, onScrollToSection }: NavigationProps) => {
               className="flex items-center gap-3 cursor-pointer group"
               onClick={() => onScrollToSection('home')}
             >
-              <img 
-                src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/6d45c5cd-35fe-4de3-864e-96bb3d45d061.jpg" 
-                alt="MagicTour Logo" 
-                className="h-12 w-12 object-contain rounded-full border-2 border-primary/50 group-hover:border-primary transition-all duration-300 group-hover:scale-110"
-              />
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              <div className="relative">
+                <img 
+                  src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/6d45c5cd-35fe-4de3-864e-96bb3d45d061.jpg" 
+                  alt="MagicTour Logo" 
+                  className="h-12 w-12 object-contain rounded-full border-2 border-primary/50 group-hover:border-primary transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 animate-logo-appear animate-logo-glow"
+                />
+                <div className="absolute inset-0 rounded-full animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-fade-in">
                 MagicTour
               </h1>
             </div>
