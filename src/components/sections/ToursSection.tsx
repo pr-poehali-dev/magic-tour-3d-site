@@ -1,135 +1,412 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import TourModal from '@/components/TourModal';
 
-const tours = [
+interface Tour {
+  title: string;
+  description: string;
+  icon: string;
+  gradient: string;
+  fullDescription: string;
+  images: string[];
+  duration: string;
+  difficulty: string;
+  price: string;
+  features: string[];
+}
+
+const tours: Tour[] = [
   {
     title: 'Рафтинг',
     description: 'Экстремальный сплав по горным рекам Адыгеи',
     icon: 'Waves',
-    gradient: 'from-primary to-blue-600'
+    gradient: 'from-primary to-blue-600',
+    fullDescription: 'Испытайте настоящий адреналин на бурных водах горных рек Адыгеи! Рафтинг — это командное приключение, где вы преодолеете пороги разной сложности, насладитесь живописными каньонами и кристально чистой водой. Опытные инструкторы обеспечат безопасность и научат управлять рафтом.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/53bce95d-91bd-4527-af8b-789a296659bf.jpg'
+    ],
+    duration: '4-6 часов',
+    difficulty: 'Средняя',
+    price: 'от 2500₽',
+    features: [
+      'Профессиональное снаряжение',
+      'Опытный инструктор',
+      'Страховка',
+      'Трансфер к месту старта',
+      'Фотосъёмка на воде',
+      'Горячий обед после сплава'
+    ]
   },
   {
     title: 'Воздушный шар',
     description: 'Незабываемый полёт над горами на рассвете',
     icon: 'Cloud',
-    gradient: 'from-accent to-orange-600'
+    gradient: 'from-accent to-orange-600',
+    fullDescription: 'Поднимитесь в небо на рассвете и увидьте Кавказские горы с высоты птичьего полёта! Полёт на воздушном шаре — это магическое путешествие в тишине над заснеженными пиками, зелёными долинами и горными реками. Идеальный подарок для романтиков и любителей незабываемых впечатлений.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/d2816355-2135-4ceb-93bd-1f5851b40fc3.jpg'
+    ],
+    duration: '3-4 часа',
+    difficulty: 'Лёгкая',
+    price: 'от 15000₽',
+    features: [
+      'Полёт длительностью 1 час',
+      'Опытный пилот',
+      'Встреча рассвета в небе',
+      'Шампанское после полёта',
+      'Сертификат воздухоплавателя',
+      'Трансфер и страховка'
+    ]
   },
   {
     title: 'Конные прогулки',
     description: 'Живописные маршруты верхом на лошадях',
     icon: 'Mountain',
-    gradient: 'from-secondary to-green-600'
+    gradient: 'from-secondary to-green-600',
+    fullDescription: 'Верховая езда по живописным горным тропам — это способ почувствовать единение с природой. Маршруты проходят через альпийские луга, лесные поляны и горные перевалы. Подходит как для новичков, так и для опытных наездников. Спокойные лошади и профессиональные инструкторы сделают прогулку безопасной и комфортной.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/fd9a6813-8d1a-47b2-b1fb-0ee8a7d0743e.jpg'
+    ],
+    duration: '2-8 часов',
+    difficulty: 'Лёгкая',
+    price: 'от 1500₽',
+    features: [
+      'Подбор лошади под ваш уровень',
+      'Инструктаж по верховой езде',
+      'Сопровождение инструктора',
+      'Фотосессия с лошадьми',
+      'Маршруты разной длительности',
+      'Опционально: многодневные туры'
+    ]
   },
   {
     title: '30-й Маршрут',
     description: 'Легендарный пеший маршрут через горы к Чёрному морю',
     icon: 'Compass',
-    gradient: 'from-blue-600 to-cyan-600'
+    gradient: 'from-blue-600 to-cyan-600',
+    fullDescription: 'Легендарный всесоюзный маршрут №30 — это классика горного туризма! Многодневный поход через Кавказский хребет с прохождением перевалов, ночёвками в приютах и выходом к Чёрному морю. Вы увидите ледники, альпийские луга, водопады и реликтовые леса. Маршрут требует хорошей физической подготовки.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/3c1b3096-dbe5-4077-9813-3d731ee54c50.jpg'
+    ],
+    duration: '7-10 дней',
+    difficulty: 'Высокая',
+    price: 'от 25000₽',
+    features: [
+      'Опытный горный гид',
+      'Проживание в приютах',
+      'Трёхразовое питание',
+      'Аренда снаряжения',
+      'Групповая аптечка',
+      'Баня на финише',
+      'Трансфер от/до Сочи'
+    ]
   },
   {
     title: 'Восхождение на Тхач',
     description: 'Покорение величественной горы Тхач — объекта ЮНЕСКО',
     icon: 'TrendingUp',
-    gradient: 'from-purple-600 to-pink-600'
+    gradient: 'from-purple-600 to-pink-600',
+    fullDescription: 'Гора Тхач (2368 м) — объект всемирного наследия ЮНЕСКО с уникальными скальными стенами и альпийскими лугами. Восхождение подходит для подготовленных туристов. С вершины открывается панорама на Главный Кавказский хребет, Эльбрус и Фишт. Маршрут проходит через цветущие поляны и реликтовые леса.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/0257ee0f-dfff-43c7-9ea8-1671ef7abfb4.jpg'
+    ],
+    duration: '2-3 дня',
+    difficulty: 'Высокая',
+    price: 'от 8500₽',
+    features: [
+      'Восхождение на вершину 2368 м',
+      'Ночёвка в палатках',
+      'Горный гид-инструктор',
+      'Питание на маршруте',
+      'Аренда группового снаряжения',
+      'Трансфер до начала маршрута'
+    ]
   },
   {
     title: 'Вершины Фишт и Оштен',
     description: 'Горный поход к снежным великанам Кавказа',
     icon: 'Mountain',
-    gradient: 'from-indigo-600 to-blue-600'
+    gradient: 'from-indigo-600 to-blue-600',
+    fullDescription: 'Фишт (2867 м) и Оштен (2804 м) — визитные карточки Западного Кавказа, покрытые вечными снегами и ледниками. Это технически сложный маршрут с элементами альпинизма. Вы пройдёте через плато Лаго-Наки, увидите ледники, карстовые воронки и альпийские озёра. Требуется опыт горных походов.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/7b9e6708-07e3-41aa-847d-db083548efd8.jpg'
+    ],
+    duration: '4-5 дней',
+    difficulty: 'Высокая',
+    price: 'от 18000₽',
+    features: [
+      'Восхождение на две вершины',
+      'Опытный альпинист-гид',
+      'Техническое снаряжение',
+      'Ночёвки в приютах и палатках',
+      'Полный пансион',
+      'Страховка от несчастных случаев'
+    ]
   },
   {
     title: 'Гуамское ущелье',
     description: 'Прогулка по живописному каньону с узкоколейкой',
     icon: 'Trees',
-    gradient: 'from-green-600 to-emerald-600'
+    gradient: 'from-green-600 to-emerald-600',
+    fullDescription: 'Гуамское ущелье — один из самых красивых каньонов Кавказа. Вертикальные скальные стены высотой 400 метров, река Курджипс и старинная узкоколейная дорога создают фантастический пейзаж. Прогулка по каньону подходит для всей семьи. Можно прокатиться на туристическом поезде или пройти пешком по экотропе.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/664147be-3005-412c-b9a4-71d658c926fe.jpg'
+    ],
+    duration: '4-5 часов',
+    difficulty: 'Лёгкая',
+    price: 'от 1200₽',
+    features: [
+      'Прогулка по узкоколейке',
+      'Экотропа вдоль реки',
+      'Смотровые площадки',
+      'Кафе с местной кухней',
+      'Сувенирные лавки',
+      'Трансфер из Краснодара'
+    ]
   },
   {
     title: 'Чёртов Палец',
     description: 'Треккинг к легендарной скале с панорамными видами',
     icon: 'Hand',
-    gradient: 'from-orange-600 to-red-600'
+    gradient: 'from-orange-600 to-red-600',
+    fullDescription: 'Чёртов Палец — это одинокая скала-останец высотой 40 метров с невероятными видами на долину и горы. Лёгкий треккинг подходит для новичков и семей с детьми. С вершины скалы открывается панорама на хребет Уна-Коз и окрестности посёлка Каменномостский. Идеальное место для фотосессий на закате.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/ea8728da-2698-4337-9b8e-dad03fd802a3.jpg'
+    ],
+    duration: '3-4 часа',
+    difficulty: 'Лёгкая',
+    price: 'от 800₽',
+    features: [
+      'Маршрут 5 км туда-обратно',
+      'Панорамные виды с вершины',
+      'Лесные тропы',
+      'Гид-экскурсовод',
+      'Время для фотосессии',
+      'Рассказы о легендах места'
+    ]
   },
   {
     title: 'Гранитный каньон',
     description: 'Захватывающий маршрут через гранитные скалы',
     icon: 'Square',
-    gradient: 'from-slate-600 to-gray-600'
+    gradient: 'from-slate-600 to-gray-600',
+    fullDescription: 'Гранитный каньон реки Белой — уникальное место с отвесными гранитными стенами и бирюзовой водой. Маршрут проходит по краю каньона с головокружительными видами. Можно спуститься к реке для купания в природных ваннах. Особенно красиво весной и летом, когда скалы покрываются зеленью.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/53bce95d-91bd-4527-af8b-789a296659bf.jpg'
+    ],
+    duration: '3-4 часа',
+    difficulty: 'Средняя',
+    price: 'от 1000₽',
+    features: [
+      'Прогулка вдоль каньона',
+      'Купание в природных ваннах',
+      'Смотровые площадки',
+      'Экскурсовод',
+      'Фотоостановки',
+      'Пикник у реки (опционально)'
+    ]
   },
   {
     title: 'Водопады Руфабго',
     description: 'Экскурсия к каскаду живописных водопадов',
     icon: 'Droplets',
-    gradient: 'from-cyan-600 to-blue-600'
+    gradient: 'from-cyan-600 to-blue-600',
+    fullDescription: 'Каскад водопадов Руфабго — это 16 водопадов на горной реке, каждый со своим характером и легендой. Оборудованные тропы, мостики и смотровые площадки делают маршрут доступным для всех. Вы увидите «Шум», «Каскадный», «Девичья коса» и другие водопады. Летом можно купаться в водных чашах.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/b389d23a-1a3c-4280-a79b-f400f2c698c7.jpg'
+    ],
+    duration: '3-5 часов',
+    difficulty: 'Лёгкая',
+    price: 'от 600₽',
+    features: [
+      'Посещение 5-7 водопадов',
+      'Оборудованные тропы',
+      'Подвесные мостики',
+      'Возможность купания',
+      'Кафе на маршруте',
+      'Сувенирные лавки'
+    ]
   },
   {
     title: 'Азишская пещера',
     description: 'Подземное царство сталактитов и сталагмитов',
     icon: 'Circle',
-    gradient: 'from-amber-600 to-yellow-600'
+    gradient: 'from-amber-600 to-yellow-600',
+    fullDescription: 'Азишская пещера — одна из красивейших пещер Кавказа с огромными залами, подземными реками и фантастическими сталактитовыми образованиями. Экскурсия проходит по оборудованным тропам с подсветкой. Вы узнаете о формировании пещер и увидите природные скульптуры возрастом миллионы лет. Температура в пещере +6°C круглый год.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/df203689-8bc8-4016-a81c-fd58009319f8.jpg'
+    ],
+    duration: '2-3 часа',
+    difficulty: 'Лёгкая',
+    price: 'от 500₽',
+    features: [
+      'Экскурсия по пещере (1 час)',
+      'Освещённые тропы',
+      'Опытный спелеогид',
+      'Рассказ о геологии',
+      'Фотографирование разрешено',
+      'Тёплая одежда в аренду'
+    ]
   },
   {
     title: 'Замок древнего человека',
     description: 'Музей под открытым небом — жилище первобытных людей',
     icon: 'Castle',
-    gradient: 'from-brown-600 to-orange-700'
+    gradient: 'from-brown-600 to-orange-700',
+    fullDescription: 'Хаджохская стоянка «Замок древнего человека» — археологический памятник, где 200 000 лет назад жили первобытные люди. Музей под открытым небом показывает быт древних охотников. Здесь найдены каменные орудия труда эпохи палеолита. Экскурсия интересна и детям, и взрослым.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/3c1b3096-dbe5-4077-9813-3d731ee54c50.jpg'
+    ],
+    duration: '2 часа',
+    difficulty: 'Лёгкая',
+    price: 'от 400₽',
+    features: [
+      'Экскурсия по стоянке',
+      'Реконструкция жилищ',
+      'Археологические находки',
+      'Интерактивная программа',
+      'Мастер-классы для детей',
+      'Сувенирная лавка'
+    ]
   },
   {
     title: 'Экстрим-парк Мишоко',
     description: 'Адреналин на скалодромах и подвесных мостах',
     icon: 'Zap',
-    gradient: 'from-red-600 to-orange-600'
+    gradient: 'from-red-600 to-orange-600',
+    fullDescription: 'Экстрим-парк Мишоко — рай для любителей адреналина! Здесь находится самая длинная в России верёвочная переправа над каньоном (500 м), троллей, скалодромы, виа-феррата и подвесные мосты. Всё проходит над живописным каньоном реки Белой. Безопасность обеспечивают современные системы страховки и опытные инструкторы.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/53bce95d-91bd-4527-af8b-789a296659bf.jpg'
+    ],
+    duration: '3-5 часов',
+    difficulty: 'Средняя',
+    price: 'от 2000₽',
+    features: [
+      'Троллей над каньоном (500 м)',
+      'Верёвочный парк',
+      'Скалодром',
+      'Виа-феррата',
+      'Профессиональная страховка',
+      'Инструктаж и сопровождение'
+    ]
   },
   {
     title: 'Хаджохская теснина',
     description: 'Узкое ущелье реки Белой с бирюзовой водой',
     icon: 'Waves',
-    gradient: 'from-teal-600 to-cyan-600'
+    gradient: 'from-teal-600 to-cyan-600',
+    fullDescription: 'Хаджохская теснина — уникальный каньон, где река Белая пробила в скалах узкий проход шириной всего 6-7 метров при глубине до 40 метров. Вода здесь невероятно красивого бирюзового цвета. Прогулка проходит по безопасным мостикам и смотровым площадкам. Одно из самых фотогеничных мест Адыгеи!',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/664147be-3005-412c-b9a4-71d658c926fe.jpg'
+    ],
+    duration: '1-2 часа',
+    difficulty: 'Лёгкая',
+    price: 'от 300₽',
+    features: [
+      'Прогулка по каньону',
+      'Смотровые площадки',
+      'Подвесные мостики',
+      'Фотозоны',
+      'Кафе и сувениры',
+      'Экскурсовод (опционально)'
+    ]
   },
   {
     title: 'Свято-Михайловский монастырь',
     description: 'Посещение древнего мужского монастыря в горах',
     icon: 'Church',
-    gradient: 'from-purple-700 to-indigo-700'
+    gradient: 'from-purple-700 to-indigo-700',
+    fullDescription: 'Свято-Михайловский мужской монастырь расположен в живописном месте у подножия гор. Основан в 1864 году и является духовным центром Адыгеи. Вы увидите храмы, колокольню, святые источники и музей монастыря. Экскурсия познакомит с историей христианства на Кавказе и монашеской жизнью.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/3c1b3096-dbe5-4077-9813-3d731ee54c50.jpg'
+    ],
+    duration: '2-3 часа',
+    difficulty: 'Лёгкая',
+    price: 'от 500₽',
+    features: [
+      'Экскурсия по монастырю',
+      'Посещение храмов',
+      'Святые источники',
+      'Музей истории монастыря',
+      'Трапезная с монастырской едой',
+      'Трансфер из отеля'
+    ]
   },
   {
     title: 'Канатная дорога',
     description: 'Панорамные виды на горы с высоты птичьего полёта',
     icon: 'Cable',
-    gradient: 'from-sky-600 to-blue-600'
+    gradient: 'from-sky-600 to-blue-600',
+    fullDescription: 'Канатная дорога на хребет Азиш-Тау поднимет вас на высоту 1800 метров, откуда открываются потрясающие панорамы Кавказских гор. Протяжённость дороги — 2,3 км. Наверху находятся смотровые площадки, кафе и пешеходные тропы. Можно подняться на канатке, а спуститься пешком по живописному маршруту.',
+    images: [
+      'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/d2816355-2135-4ceb-93bd-1f5851b40fc3.jpg'
+    ],
+    duration: '3-4 часа',
+    difficulty: 'Лёгкая',
+    price: 'от 800₽',
+    features: [
+      'Подъём на канатной дороге',
+      'Смотровые площадки',
+      'Панорама 360°',
+      'Кафе на вершине',
+      'Пешие тропы',
+      'Зона для пикника'
+    ]
   }
 ];
 
 const ToursSection = () => {
+  const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleTourClick = (tour: Tour) => {
+    setSelectedTour(tour);
+    setIsModalOpen(true);
+  };
+
   return (
-    <section id="tours" className="py-20 px-4">
-      <div className="container mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white drop-shadow-lg">Наши туры</h2>
-        <p className="text-center text-white/90 text-lg mb-12 drop-shadow-lg">
-          Выберите приключение по душе
-        </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tours.map((tour, idx) => (
-            <Card 
-              key={tour.title} 
-              className="group hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden bg-slate-900/80 backdrop-blur-sm opacity-0 animate-fade-in-up"
-              style={{ animationDelay: `${idx * 100}ms` }}
-            >
-              <div className={`h-2 bg-gradient-to-r ${tour.gradient}`} />
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${tour.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    <Icon name={tour.icon as any} size={32} className="text-white" />
+    <>
+      <section id="tours" className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white drop-shadow-lg">Наши туры</h2>
+          <p className="text-center text-white/90 text-lg mb-12 drop-shadow-lg">
+            Выберите приключение по душе
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {tours.map((tour, idx) => (
+              <Card 
+                key={tour.title} 
+                onClick={() => handleTourClick(tour)}
+                className="group hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden bg-slate-900/80 backdrop-blur-sm opacity-0 animate-fade-in-up"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className={`h-2 bg-gradient-to-r ${tour.gradient}`} />
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${tour.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                      <Icon name={tour.icon as any} size={32} className="text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">{tour.title}</h3>
                   </div>
-                  <h3 className="text-2xl font-bold text-white">{tour.title}</h3>
-                </div>
-                <p className="text-white/80">{tour.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+                  <p className="text-white/80 mb-4">{tour.description}</p>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-white/60">{tour.duration}</span>
+                    <span className="text-primary font-semibold">{tour.price}</span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <TourModal 
+        tour={selectedTour}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 };
 

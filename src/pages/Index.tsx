@@ -6,6 +6,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import ToursSection from '@/components/sections/ToursSection';
 import GallerySection from '@/components/sections/GallerySection';
 import ReviewsSection from '@/components/sections/ReviewsSection';
+import NewsletterSection from '@/components/sections/NewsletterSection';
 import ContactSection from '@/components/sections/ContactSection';
 import BookingDialog from '@/components/sections/BookingDialog';
 
@@ -132,6 +133,8 @@ const Index = () => {
       <GallerySection selectedImage={selectedImage} onImageSelect={setSelectedImage} />
       
       <ReviewsSection />
+      
+      <NewsletterSection />
       
       <ContactSection />
 
