@@ -56,7 +56,7 @@ const Index = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
+  const handleBookingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.phone || !formData.tourType) {
@@ -68,21 +68,47 @@ const Index = () => {
       return;
     }
 
-    toast({
-      title: 'Заявка отправлена!',
-      description: 'Елена свяжется с вами в ближайшее время',
-    });
+    try {
+      const response = await fetch('https://functions.poehali.dev/31afdd22-f506-4a21-84e0-dcdc4a2dc515', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
 
-    setFormData({
-      name: '',
-      phone: '',
-      email: '',
-      tourType: '',
-      people: '',
-      date: '',
-      message: ''
-    });
-    setIsBookingOpen(false);
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        toast({
+          title: 'Заявка отправлена!',
+          description: 'Елена свяжется с вами в ближайшее время',
+        });
+
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          tourType: '',
+          people: '',
+          date: '',
+          message: ''
+        });
+        setIsBookingOpen(false);
+      } else {
+        toast({
+          title: 'Ошибка отправки',
+          description: data.error || 'Попробуйте позже или позвоните напрямую',
+          variant: 'destructive'
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Ошибка соединения',
+        description: 'Проверьте интернет или позвоните по телефону +7 (928) 669-31-65',
+        variant: 'destructive'
+      });
+    }
   };
 
   const tours = [
