@@ -105,7 +105,7 @@ const Index = () => {
     } catch (error) {
       toast({
         title: 'Ошибка соединения',
-        description: 'Проверьте интернет или позвоните по телефону +7 (928) 669-31-65',
+        description: 'Проверьте интернет или позвоните по телефону +7 (988) 475-55-04',
         variant: 'destructive'
       });
     }
@@ -413,8 +413,8 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Телефон</h3>
-                      <a href="tel:+79286693165" className="text-foreground/80 hover:text-secondary transition-colors">
-                        +7 (928) 669-31-65
+                      <a href="tel:+79884755504" className="text-foreground/80 hover:text-secondary transition-colors">
+                        +7 (988) 475-55-04
                       </a>
                     </div>
                   </div>
@@ -424,8 +424,8 @@ const Index = () => {
                     </div>
                     <div>
                       <h3 className="font-bold mb-1">Email</h3>
-                      <a href="mailto:MagicTour01@gmail.com" className="text-foreground/80 hover:text-accent transition-colors">
-                        MagicTour01@gmail.com
+                      <a href="mailto:magic-tour01@yandex.ru" className="text-foreground/80 hover:text-accent transition-colors">
+                        magic-tour01@yandex.ru
                       </a>
                     </div>
                   </div>
