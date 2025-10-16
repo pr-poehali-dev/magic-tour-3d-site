@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,8 +93,33 @@ const Index = () => {
     }
   ];
 
+  const galleryImages = [
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/f5b9735e-a44b-4aee-8404-b64f160bf0aa.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/28fc8ce0-d02b-41fe-923f-c091a4fe6623.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/55099b18-6fef-48a2-8e85-b8a5cee77341.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/ff84d34d-6a9d-42de-b717-e1bab6049a95.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/34721ea5-5a3a-4037-b389-74ee5e86f03b.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/aff811bf-9a36-4411-9cf7-4b124078f818.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/5c47d210-e7df-4fa8-b236-6357870b5c4e.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/20ea7fe7-b8ca-4c25-be52-b4b2a6e0e91b.jpg',
+    'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/26aba0e6-74e8-4e01-ae0f-50f9ebebcd6b.jpg'
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted">
+    <div className="min-h-screen relative">
+      <div className="fixed inset-0 -z-10">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover opacity-20"
+          poster="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/f5b9735e-a44b-4aee-8404-b64f160bf0aa.jpg"
+        >
+          <source src="https://cdn.pixabay.com/video/2022/11/07/138619-768980873_large.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95" />
+      </div>
       <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg z-50 border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -218,29 +245,34 @@ const Index = () => {
             Красота гор Адыгеи в фотографиях
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/f5b9735e-a44b-4aee-8404-b64f160bf0aa.jpg',
-              'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/28fc8ce0-d02b-41fe-923f-c091a4fe6623.jpg',
-              'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/55099b18-6fef-48a2-8e85-b8a5cee77341.jpg',
-              'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/f5b9735e-a44b-4aee-8404-b64f160bf0aa.jpg',
-              'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/28fc8ce0-d02b-41fe-923f-c091a4fe6623.jpg',
-              'https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/55099b18-6fef-48a2-8e85-b8a5cee77341.jpg'
-            ].map((image, index) => (
-              <div
-                key={index}
-                className="relative aspect-square rounded-lg overflow-hidden group cursor-pointer animate-scale-in"
-                style={{ animationDelay: `${index * 80}ms` }}
-              >
-                <img 
-                  src={image} 
-                  alt={`Адыгея ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Icon name="ZoomIn" size={40} className="text-white" />
-                </div>
-              </div>
+            {galleryImages.map((image, index) => (
+              <Dialog key={index}>
+                <DialogTrigger asChild>
+                  <div
+                    className="relative aspect-square rounded-lg overflow-hidden group cursor-pointer animate-scale-in"
+                    style={{ animationDelay: `${index * 80}ms` }}
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Адыгея ${index + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Icon name="ZoomIn" size={40} className="text-white" />
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl w-full p-0 bg-black/95 border-0">
+                  <div className="relative w-full">
+                    <img 
+                      src={image} 
+                      alt={`Адыгея ${index + 1}`}
+                      className="w-full h-auto max-h-[90vh] object-contain"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </div>
