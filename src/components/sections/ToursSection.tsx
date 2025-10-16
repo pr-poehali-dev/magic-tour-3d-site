@@ -44,8 +44,8 @@ const ToursSection = () => {
   return (
     <section id="tours" className="py-20 px-4">
       <div className="container mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Наши туры</h2>
-        <p className="text-center text-foreground/70 text-lg mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white drop-shadow-lg">Наши туры</h2>
+        <p className="text-center text-white/90 text-lg mb-12 drop-shadow-lg">
           Выберите приключение по душе
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -57,9 +57,9 @@ const ToursSection = () => {
                   <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${tour.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
                     <Icon name={tour.icon as any} size={32} className="text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold">{tour.title}</h3>
+                  <h3 className="text-2xl font-bold text-white">{tour.title}</h3>
                 </div>
-                <p className="text-foreground/70">{tour.description}</p>
+                <p className="text-white/80">{tour.description}</p>
               </CardContent>
             </Card>
           ))}

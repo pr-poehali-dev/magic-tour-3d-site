@@ -23,8 +23,8 @@ const ReviewsSection = () => {
   return (
     <section id="reviews" className="py-20 px-4">
       <div className="container mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Отзывы</h2>
-        <p className="text-center text-foreground/70 text-lg mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white drop-shadow-lg">Отзывы</h2>
+        <p className="text-center text-white/90 text-lg mb-12 drop-shadow-lg">
           Что говорят наши клиенты
         </p>
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -36,8 +36,8 @@ const ReviewsSection = () => {
                     <Icon key={i} name="Star" size={20} className="text-accent fill-accent" />
                   ))}
                 </div>
-                <p className="text-foreground/80 mb-4 italic">"{review.text}"</p>
-                <p className="font-semibold text-primary">{review.name}</p>
+                <p className="text-white/90 mb-4 italic">"{review.text}"</p>
+                <p className="font-semibold text-white">{review.name}</p>
               </CardContent>
             </Card>
           ))}

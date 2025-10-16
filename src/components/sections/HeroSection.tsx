@@ -18,7 +18,7 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
           <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
             Магия гор Адыгеи
           </h2>
-          <p className="text-xl md:text-2xl text-foreground/80 mb-8">
+          <p className="text-xl md:text-2xl text-white drop-shadow-lg mb-8">
             Более 20 лет создаём незабываемые приключения в самых красивых местах России
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -32,8 +32,7 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="text-lg px-8 py-6 border-2 border-white text-white hover:bg-white hover:text-slate-900"
+              className="bg-gradient-to-r from-secondary to-green-600 hover:from-secondary/90 hover:to-green-600/90 text-lg px-8 py-6 text-white"
               onClick={onBookingOpen}
             >
               <Icon name="Calendar" className="mr-2" size={20} />
@@ -46,22 +45,22 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
           <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <Icon name="Award" size={48} className="mx-auto mb-4 text-primary" />
-              <h3 className="text-2xl font-bold mb-2">20+ лет</h3>
-              <p className="text-foreground/70">опыта в туризме</p>
+              <h3 className="text-2xl font-bold mb-2 text-white">20+ лет</h3>
+              <p className="text-white/80">опыта в туризме</p>
             </CardContent>
           </Card>
           <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <Icon name="Users" size={48} className="mx-auto mb-4 text-secondary" />
-              <h3 className="text-2xl font-bold mb-2">Индивидуальный</h3>
-              <p className="text-foreground/70">подход к каждому</p>
+              <h3 className="text-2xl font-bold mb-2 text-white">Индивидуальный</h3>
+              <p className="text-white/80">подход к каждому</p>
             </CardContent>
           </Card>
           <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm">
             <CardContent className="p-8">
               <Icon name="Shield" size={48} className="mx-auto mb-4 text-accent" />
-              <h3 className="text-2xl font-bold mb-2">Безопасность</h3>
-              <p className="text-foreground/70">превыше всего</p>
+              <h3 className="text-2xl font-bold mb-2 text-white">Безопасность</h3>
+              <p className="text-white/80">превыше всего</p>
             </CardContent>
           </Card>
         </div>

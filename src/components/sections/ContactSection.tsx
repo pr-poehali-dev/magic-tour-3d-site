@@ -5,8 +5,8 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-20 px-4">
       <div className="container mx-auto max-w-4xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Контакты</h2>
-        <p className="text-center text-foreground/70 text-lg mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white drop-shadow-lg">Контакты</h2>
+        <p className="text-center text-white/90 text-lg mb-12 drop-shadow-lg">
           Свяжитесь с нами для подбора идеального тура
         </p>
         <Card className="border-2 bg-slate-900/80 backdrop-blur-sm">
@@ -28,8 +28,8 @@ const ContactSection = () => {
                     <Icon name="Phone" size={24} className="text-secondary" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1">Телефон</h3>
-                    <a href="tel:+79884755504" className="text-foreground/80 hover:text-secondary transition-colors">
+                    <h3 className="font-bold mb-1 text-white">Телефон</h3>
+                    <a href="tel:+79884755504" className="text-white/90 hover:text-secondary transition-colors">
                       +7 (988) 475-55-04
                     </a>
                   </div>
@@ -39,8 +39,8 @@ const ContactSection = () => {
                     <Icon name="Mail" size={24} className="text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1">Email</h3>
-                    <a href="mailto:magic-tour01@yandex.ru" className="text-foreground/80 hover:text-accent transition-colors">
+                    <h3 className="font-bold mb-1 text-white">Email</h3>
+                    <a href="mailto:magic-tour01@yandex.ru" className="text-white/90 hover:text-accent transition-colors">
                       magic-tour01@yandex.ru
                     </a>
                   </div>
@@ -56,7 +56,7 @@ const ContactSection = () => {
                     title="Карта местоположения"
                   ></iframe>
                 </div>
-                <p className="text-sm text-foreground/60 text-center">
+                <p className="text-sm text-white/70 text-center">
                   Работаем ежедневно с 9:00 до 21:00
                 </p>
               </div>
