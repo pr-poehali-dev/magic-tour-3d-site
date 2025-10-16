@@ -21,22 +21,82 @@ const tours = [
     gradient: 'from-secondary to-green-600'
   },
   {
-    title: 'Сплав',
-    description: 'Спокойный сплав для всей семьи',
-    icon: 'Ship',
-    gradient: 'from-primary to-cyan-600'
+    title: '30-й Маршрут',
+    description: 'Легендарный пеший маршрут через горы к Чёрному морю',
+    icon: 'Compass',
+    gradient: 'from-blue-600 to-cyan-600'
   },
   {
-    title: 'Треккинг',
-    description: 'Пешие походы к водопадам и пещерам',
-    icon: 'Footprints',
-    gradient: 'from-secondary to-emerald-600'
+    title: 'Восхождение на Тхач',
+    description: 'Покорение величественной горы Тхач — объекта ЮНЕСКО',
+    icon: 'TrendingUp',
+    gradient: 'from-purple-600 to-pink-600'
   },
   {
-    title: 'Экскурсии',
-    description: 'Знакомство с культурой и природой края',
-    icon: 'Camera',
-    gradient: 'from-accent to-yellow-600'
+    title: 'Вершины Фишт и Оштен',
+    description: 'Горный поход к снежным великанам Кавказа',
+    icon: 'Mountain',
+    gradient: 'from-indigo-600 to-blue-600'
+  },
+  {
+    title: 'Гуамское ущелье',
+    description: 'Прогулка по живописному каньону с узкоколейкой',
+    icon: 'Trees',
+    gradient: 'from-green-600 to-emerald-600'
+  },
+  {
+    title: 'Чёртов Палец',
+    description: 'Треккинг к легендарной скале с панорамными видами',
+    icon: 'Hand',
+    gradient: 'from-orange-600 to-red-600'
+  },
+  {
+    title: 'Гранитный каньон',
+    description: 'Захватывающий маршрут через гранитные скалы',
+    icon: 'Square',
+    gradient: 'from-slate-600 to-gray-600'
+  },
+  {
+    title: 'Водопады Руфабго',
+    description: 'Экскурсия к каскаду живописных водопадов',
+    icon: 'Droplets',
+    gradient: 'from-cyan-600 to-blue-600'
+  },
+  {
+    title: 'Азишская пещера',
+    description: 'Подземное царство сталактитов и сталагмитов',
+    icon: 'Circle',
+    gradient: 'from-amber-600 to-yellow-600'
+  },
+  {
+    title: 'Замок древнего человека',
+    description: 'Музей под открытым небом — жилище первобытных людей',
+    icon: 'Castle',
+    gradient: 'from-brown-600 to-orange-700'
+  },
+  {
+    title: 'Экстрим-парк Мишоко',
+    description: 'Адреналин на скалодромах и подвесных мостах',
+    icon: 'Zap',
+    gradient: 'from-red-600 to-orange-600'
+  },
+  {
+    title: 'Хаджохская теснина',
+    description: 'Узкое ущелье реки Белой с бирюзовой водой',
+    icon: 'Waves',
+    gradient: 'from-teal-600 to-cyan-600'
+  },
+  {
+    title: 'Свято-Михайловский монастырь',
+    description: 'Посещение древнего мужского монастыря в горах',
+    icon: 'Church',
+    gradient: 'from-purple-700 to-indigo-700'
+  },
+  {
+    title: 'Канатная дорога',
+    description: 'Панорамные виды на горы с высоты птичьего полёта',
+    icon: 'Cable',
+    gradient: 'from-sky-600 to-blue-600'
   }
 ];
 

@@ -49,7 +49,7 @@ const ContactSection = () => {
               <div className="space-y-4">
                 <div className="aspect-video rounded-lg overflow-hidden">
                   <iframe
-                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A8b5e4c3a2f1d9e0b&amp;source=constructor"
+                    src="https://yandex.ru/map-widget/v1/?ll=39.9944%2C44.2000&mode=search&sll=39.9944%2C44.2000&text=%D0%9B%D0%B0%D0%B3%D0%BE-%D0%9D%D0%B0%D0%BA%D0%B8%2C%20%D0%BA%D0%B0%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%BC%D0%BE%D1%81%D1%82%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%BC%D0%B5%D0%B7%D0%BC%D0%B0%D0%B9%2C%20%D0%B4%D0%B0%D1%85%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%20%D0%B3%D1%83%D0%B7%D0%B5%D1%80%D0%B8%D0%BF%D0%BB%D1%8C&z=10&l=sat"
                     width="100%"
                     height="100%"
                     frameBorder="0"

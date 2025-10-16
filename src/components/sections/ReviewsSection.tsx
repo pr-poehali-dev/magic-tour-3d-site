@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
 const reviews = [
@@ -203,6 +205,9 @@ const reviews = [
 ];
 
 const ReviewsSection = () => {
+  const [showAll, setShowAll] = useState(false);
+  const displayedReviews = showAll ? reviews : reviews.slice(0, 6);
+
   return (
     <section id="reviews" className="py-20 px-4">
       <div className="container mx-auto">
@@ -211,7 +216,7 @@ const ReviewsSection = () => {
           Что говорят наши клиенты
         </p>
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {reviews.map((review, idx) => (
+          {displayedReviews.map((review, idx) => (
             <Card 
               key={idx} 
               className="hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm opacity-0 animate-fade-in-up"
@@ -231,6 +236,25 @@ const ReviewsSection = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+        
+        <div className="text-center mt-8">
+          <Button
+            onClick={() => setShowAll(!showAll)}
+            className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white px-8 py-3"
+          >
+            {showAll ? (
+              <>
+                <Icon name="ChevronUp" className="mr-2" size={20} />
+                Свернуть отзывы
+              </>
+            ) : (
+              <>
+                <Icon name="ChevronDown" className="mr-2" size={20} />
+                Показать все отзывы ({reviews.length})
+              </>
+            )}
+          </Button>
         </div>
       </div>
     </section>
