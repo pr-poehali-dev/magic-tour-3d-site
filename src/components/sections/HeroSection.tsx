@@ -33,7 +33,7 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 py-6 border-2"
+              className="text-lg px-8 py-6 border-2 border-white text-white hover:bg-white hover:text-slate-900"
               onClick={onBookingOpen}
             >
               <Icon name="Calendar" className="mr-2" size={20} />

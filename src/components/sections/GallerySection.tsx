@@ -44,7 +44,7 @@ const GallerySection = ({ selectedImage, onImageSelect }: GallerySectionProps) =
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={() => onImageSelect(null)}>
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="max-w-4xl bg-slate-900 border-slate-700">
           <img src={selectedImage || ''} alt="Увеличенное фото" className="w-full rounded-lg" />
         </DialogContent>
       </Dialog>

@@ -27,7 +27,7 @@ interface BookingDialogProps {
 const BookingDialog = ({ isOpen, onOpenChange, formData, onInputChange, onSubmit }: BookingDialogProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-slate-900 text-white border-slate-700">
         <DialogHeader>
           <DialogTitle className="text-2xl">Забронировать тур</DialogTitle>
         </DialogHeader>
