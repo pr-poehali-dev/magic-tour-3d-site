@@ -1,0 +1,71 @@
+import { Card, CardContent } from '@/components/ui/card';
+import Icon from '@/components/ui/icon';
+
+const ContactSection = () => {
+  return (
+    <section id="contact" className="py-20 px-4">
+      <div className="container mx-auto max-w-4xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Контакты</h2>
+        <p className="text-center text-foreground/70 text-lg mb-12">
+          Свяжитесь с нами для подбора идеального тура
+        </p>
+        <Card className="border-2 bg-slate-900/80 backdrop-blur-sm">
+          <CardContent className="p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon name="User" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">Туроператор</h3>
+                    <p className="text-foreground/80">Елена А.</p>
+                    <p className="text-sm text-foreground/60">Профессиональный подбор туров</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Phone" size={24} className="text-secondary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">Телефон</h3>
+                    <a href="tel:+79884755504" className="text-foreground/80 hover:text-secondary transition-colors">
+                      +7 (988) 475-55-04
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Mail" size={24} className="text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1">Email</h3>
+                    <a href="mailto:magic-tour01@yandex.ru" className="text-foreground/80 hover:text-accent transition-colors">
+                      magic-tour01@yandex.ru
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="aspect-video rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A8b5e4c3a2f1d9e0b&amp;source=constructor"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    title="Карта местоположения"
+                  ></iframe>
+                </div>
+                <p className="text-sm text-foreground/60 text-center">
+                  Работаем ежедневно с 9:00 до 21:00
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
