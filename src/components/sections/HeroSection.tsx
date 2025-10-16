@@ -12,9 +12,6 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
     <section id="home" className="pt-32 pb-20 px-4">
       <div className="container mx-auto">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <div className="inline-block mb-6">
-            <span className="text-6xl animate-float">🏔️</span>
-          </div>
           <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
             Магия гор Адыгеи
           </h2>

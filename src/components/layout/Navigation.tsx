@@ -27,9 +27,19 @@ const Navigation = ({ activeSection, onScrollToSection }: NavigationProps) => {
       <nav className="fixed top-0 w-full bg-black/40 backdrop-blur-lg z-50 border-b border-white/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              MagicTour
-            </h1>
+            <div 
+              className="flex items-center gap-3 cursor-pointer group"
+              onClick={() => onScrollToSection('home')}
+            >
+              <img 
+                src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/6d45c5cd-35fe-4de3-864e-96bb3d45d061.jpg" 
+                alt="MagicTour Logo" 
+                className="h-12 w-12 object-contain rounded-full border-2 border-primary/50 group-hover:border-primary transition-all duration-300 group-hover:scale-110"
+              />
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                MagicTour
+              </h1>
+            </div>
             
             <div className="hidden md:flex gap-6">
               {menuItems.map((item) => (
