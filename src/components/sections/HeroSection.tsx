@@ -19,7 +19,7 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
             Магия гор Адыгеи
           </h2>
           <p className="text-xl md:text-2xl text-white drop-shadow-lg mb-8">
-            Более 20 лет создаём незабываемые приключения в самых красивых местах России
+            Более 10 лет создаём незабываемые приключения в самых красивых местах России
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -42,21 +42,21 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mt-20">
-          <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm">
+          <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm opacity-0 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
             <CardContent className="p-8">
               <Icon name="Award" size={48} className="mx-auto mb-4 text-primary" />
-              <h3 className="text-2xl font-bold mb-2 text-white">20+ лет</h3>
+              <h3 className="text-2xl font-bold mb-2 text-white">10+ лет</h3>
               <p className="text-white/80">опыта в туризме</p>
             </CardContent>
           </Card>
-          <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm">
+          <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm opacity-0 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
             <CardContent className="p-8">
               <Icon name="Users" size={48} className="mx-auto mb-4 text-secondary" />
               <h3 className="text-2xl font-bold mb-2 text-white">Индивидуальный</h3>
               <p className="text-white/80">подход к каждому</p>
             </CardContent>
           </Card>
-          <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm">
+          <Card className="text-center hover:scale-105 transition-transform duration-300 bg-slate-900/80 backdrop-blur-sm opacity-0 animate-fade-in-up" style={{ animationDelay: '600ms' }}>
             <CardContent className="p-8">
               <Icon name="Shield" size={48} className="mx-auto mb-4 text-accent" />
               <h3 className="text-2xl font-bold mb-2 text-white">Безопасность</h3>

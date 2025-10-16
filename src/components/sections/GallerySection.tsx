@@ -29,7 +29,8 @@ const GallerySection = ({ selectedImage, onImageSelect }: GallerySectionProps) =
           {galleryImages.map((img, idx) => (
             <div
               key={idx}
-              className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group"
+              className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group opacity-0 animate-fade-in-up"
+              style={{ animationDelay: `${idx * 50}ms` }}
               onClick={() => onImageSelect(img)}
             >
               <img

@@ -49,8 +49,12 @@ const ToursSection = () => {
           Выберите приключение по душе
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tours.map((tour) => (
-            <Card key={tour.title} className="group hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden bg-slate-900/80 backdrop-blur-sm">
+          {tours.map((tour, idx) => (
+            <Card 
+              key={tour.title} 
+              className="group hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden bg-slate-900/80 backdrop-blur-sm opacity-0 animate-fade-in-up"
+              style={{ animationDelay: `${idx * 100}ms` }}
+            >
               <div className={`h-2 bg-gradient-to-r ${tour.gradient}`} />
               <CardContent className="p-6">
                 <div className="flex items-center gap-4 mb-4">
