@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import Navigation from '@/components/layout/Navigation';
 import SocialButtons from '@/components/layout/SocialButtons';
+import StarDust from '@/components/StarDust';
 import HeroSection from '@/components/sections/HeroSection';
 import ToursSection from '@/components/sections/ToursSection';
 import GallerySection from '@/components/sections/GallerySection';
@@ -124,6 +125,8 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
       </div>
 
+      <StarDust />
+      
       <Navigation activeSection={activeSection} onScrollToSection={scrollToSection} />
       
       <HeroSection onScrollToSection={scrollToSection} onBookingOpen={() => setIsBookingOpen(true)} />
