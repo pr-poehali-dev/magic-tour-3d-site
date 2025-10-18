@@ -15,7 +15,7 @@ const HeroSection = ({ onScrollToSection, onBookingOpen }: HeroSectionProps) => 
           <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
             Магия гор Адыгеи
           </h2>
-          <p className="text-2xl md:text-4xl mb-8 font-bold bg-gradient-to-r from-yellow-200 via-amber-300 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] animate-pulse" style={{ fontFamily: '"Dancing Script", "Allura", "Sacramento", cursive', fontWeight: 700, textShadow: '0 0 30px rgba(251, 191, 36, 0.5)' }}>
+          <p className="text-2xl md:text-4xl mb-8 font-bold bg-gradient-to-r from-yellow-200 via-amber-300 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(251,191,36,0.8)] opacity-0 animate-gold-text-appear" style={{ fontFamily: '"Dancing Script", "Allura", "Sacramento", cursive', fontWeight: 700, textShadow: '0 0 30px rgba(251, 191, 36, 0.5)', animationDelay: '500ms' }}>
             Мы более 10 лет создаём незабываемые приключения в одном из самых красивых мест России
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
