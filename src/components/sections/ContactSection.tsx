@@ -18,9 +18,9 @@ const ContactSection = () => {
                     <Icon name="User" size={24} className="text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1">Туроператор</h3>
-                    <p className="text-foreground/80">Елена А.</p>
-                    <p className="text-sm text-foreground/60">Профессиональный подбор туров</p>
+                    <h3 className="font-bold mb-1 text-white">Туроператор</h3>
+                    <p className="text-white/90">Елена А.</p>
+                    <p className="text-sm text-white/70">Профессиональный подбор туров</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
