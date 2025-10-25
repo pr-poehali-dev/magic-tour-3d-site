@@ -20,9 +20,9 @@
       to="360 100 100"
       dur="20s"
       repeatCount="indefinite"/>
-    <text fill="#fbbf24" opacity="0.8" font-size="20" font-family="serif" font-weight="bold">
-      <textPath href="#circlePath" startOffset="0%">
-        ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ
+    <text fill="#fbbf24" opacity="0.7" font-size="18" font-family="serif" font-weight="bold" letter-spacing="1.5">
+      <textPath href="#circlePath" startOffset="0%" textLength="477.5" lengthAdjust="spacing">
+        ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ
       </textPath>
     </text>
   </g>

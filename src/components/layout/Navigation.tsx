@@ -40,8 +40,10 @@ const Navigation = ({ activeSection, onScrollToSection }: NavigationProps) => {
                   <defs>
                     <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
                   </defs>
-                  <text className="fill-amber-400/70 group-hover:fill-amber-300 transition-colors text-[10px]" style={{ fontFamily: 'serif', fontWeight: 'bold' }}>
-                    <textPath href="#circlePath" startOffset="0%">ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ</textPath>
+                  <text className="fill-amber-400/70 group-hover:fill-amber-300 transition-colors text-[9px]" style={{ fontFamily: 'serif', fontWeight: 'bold', letterSpacing: '0.8px' }}>
+                    <textPath href="#circlePath" startOffset="0%" textLength="238.76" lengthAdjust="spacing">
+                      ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ ᚷ ᚹ ᚺ ᚾ ᛁ ᛃ ᛇ ᛈ ᛉ ᛊ ᛏ ᛒ ᛖ ᛗ ᛚ ᛜ ᛞ ᛟ
+                    </textPath>
                   </text>
                 </svg>
                 
