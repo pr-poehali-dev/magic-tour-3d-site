@@ -1,0 +1,53 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="circlePath" d="M 100, 100 m -76, 0 a 76,76 0 1,1 152,0 a 76,76 0 1,1 -152,0" />
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Вращающиеся руны -->
+  <g filter="url(#glow)">
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 100 100"
+      to="360 100 100"
+      dur="20s"
+      repeatCount="indefinite"/>
+    <text fill="#fbbf24" opacity="0.8" font-size="20" font-family="serif" font-weight="bold">
+      <textPath href="#circlePath" startOffset="0%">
+        ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ
+      </textPath>
+    </text>
+  </g>
+  
+  <!-- Внешний круг с фиолетовой рамкой -->
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#a855f7" stroke-width="3" opacity="0.5"/>
+  
+  <!-- Внутренний круг для изображения -->
+  <circle cx="100" cy="100" r="76" fill="#1a1a2e" stroke="#8b5cf6" stroke-width="2" opacity="0.9"/>
+  
+  <!-- Центральная звезда/компас (вместо изображения) -->
+  <g transform="translate(100, 100)">
+    <path d="M 0,-50 L 10,-10 L 50,0 L 10,10 L 0,50 L -10,10 L -50,0 L -10,-10 Z" 
+          fill="url(#starGradient)" 
+          opacity="0.9"
+          filter="url(#glow)"/>
+    <circle r="15" fill="#8b5cf6" opacity="0.8"/>
+    <circle r="8" fill="#fbbf24" opacity="0.9"/>
+  </g>
+  
+  <defs>
+    <radialGradient id="starGradient">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </radialGradient>
+  </defs>
+</svg>
