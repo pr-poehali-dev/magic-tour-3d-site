@@ -48,9 +48,9 @@ const Navigation = ({ activeSection, onScrollToSection }: NavigationProps) => {
                 </svg>
                 
                 <img 
-                  src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/61a3ae4e-da66-4f6c-b8b0-df25cd21f0d3.jpg" 
+                  src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/c5f1acec-8cdc-4ea8-8ec0-51be70143f8d.jpg" 
                   alt="MagicTour Logo" 
-                  className="absolute inset-0 h-full w-full object-contain rounded-full border-2 border-amber-500/50 group-hover:border-amber-400 transition-all duration-500 group-hover:scale-110 animate-logo-appear animate-logo-glow"
+                  className="absolute inset-0 h-full w-full object-contain rounded-full border-2 border-purple-500/50 group-hover:border-purple-400 transition-all duration-500 group-hover:scale-110 animate-logo-appear animate-logo-glow"
                   style={{ padding: '6px' }}
                 />
                 <div className="absolute inset-0 rounded-full animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
