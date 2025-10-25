@@ -48,15 +48,15 @@ const Navigation = ({ activeSection, onScrollToSection }: NavigationProps) => {
                 </svg>
                 
                 <img 
-                  src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/4d0fc0f3-f3c9-4111-94e9-ce32a9733c3c.jpg" 
+                  src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/4c4b4e7b-696a-4819-afc9-09066b6437c8.jpg" 
                   alt="MagicTour Logo" 
-                  className="absolute inset-0 h-full w-full object-contain rounded-full border-2 border-purple-500/50 group-hover:border-purple-400 transition-all duration-500 group-hover:scale-110 animate-logo-appear animate-logo-glow"
+                  className="absolute inset-0 h-full w-full object-contain rounded-full border-2 border-amber-600/50 group-hover:border-amber-400 transition-all duration-500 group-hover:scale-110 animate-logo-appear animate-logo-glow animate-compass-needle"
                   style={{ padding: '6px' }}
                 />
                 <div className="absolute inset-0 rounded-full animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <MagicParticles isActive={isLogoHovered} />
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-amber-300 to-blue-400 bg-clip-text text-transparent animate-fade-in">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent animate-fade-in">
                 MagicTour
               </h1>
             </div>

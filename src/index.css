@@ -238,6 +238,10 @@
   .animate-spin-slow {
     animation: spin 20s linear infinite;
   }
+
+  .animate-compass-needle {
+    animation: compassNeedle 4s ease-in-out infinite;
+  }
 }
 
 @keyframes spin {
@@ -246,6 +250,22 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes compassNeedle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
   }
 }
 
