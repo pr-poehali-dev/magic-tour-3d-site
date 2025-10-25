@@ -35,11 +35,22 @@ const Navigation = ({ activeSection, onScrollToSection }: NavigationProps) => {
               onMouseEnter={() => setIsLogoHovered(true)}
               onMouseLeave={() => setIsLogoHovered(false)}
             >
-              <div className="relative">
+              <div className="relative w-12 h-12">
+                <svg className="absolute inset-0 w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+                  <defs>
+                    <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+                  </defs>
+                  <text className="fill-amber-400/80 group-hover:fill-amber-300 transition-colors text-[11px]" style={{ fontFamily: 'serif', fontWeight: 'bold' }}>
+                    <textPath href="#circlePath" startOffset="0%">ᚠᚢᚦᚨᚱᚲ</textPath>
+                    <textPath href="#circlePath" startOffset="50%">ᚷᚹᚺᚾᛁᛃ</textPath>
+                  </text>
+                </svg>
+                
                 <img 
                   src="https://cdn.poehali.dev/projects/7a775a18-54ec-4bcc-8a62-8d723b3ce525/files/ee62f679-b7af-441f-ae87-758987dd4a47.jpg" 
                   alt="MagicTour Logo" 
-                  className="h-12 w-12 object-contain rounded-full border-2 border-purple-500/50 group-hover:border-purple-400 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 animate-logo-appear animate-logo-glow"
+                  className="absolute inset-0 h-full w-full object-contain rounded-full border-2 border-purple-500/50 group-hover:border-purple-400 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 animate-logo-appear animate-logo-glow"
+                  style={{ padding: '6px' }}
                 />
                 <div className="absolute inset-0 rounded-full animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <MagicParticles isActive={isLogoHovered} />

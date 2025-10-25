@@ -234,6 +234,19 @@
   .animate-gold-text-appear {
     animation: goldTextAppear 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
+
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .magic-particle {
