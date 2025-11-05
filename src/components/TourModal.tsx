@@ -65,7 +65,7 @@ const TourModal = ({ tour, isOpen, onClose }: TourModalProps) => {
             {tour.fullDescription}
           </p>
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <div className="flex items-center gap-3 bg-slate-800/50 rounded-lg p-4">
               <Icon name="Clock" size={24} className="text-primary" />
               <div>
@@ -78,13 +78,6 @@ const TourModal = ({ tour, isOpen, onClose }: TourModalProps) => {
               <div>
                 <p className="text-sm text-white/60">Сложность</p>
                 <p className="font-semibold">{tour.difficulty}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 bg-slate-800/50 rounded-lg p-4">
-              <Icon name="Wallet" size={24} className="text-secondary" />
-              <div>
-                <p className="text-sm text-white/60">Стоимость</p>
-                <p className="font-semibold">{tour.price}</p>
               </div>
             </div>
           </div>
