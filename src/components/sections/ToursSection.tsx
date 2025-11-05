@@ -391,9 +391,8 @@ const ToursSection = () => {
                     <h3 className="text-2xl font-bold text-white">{tour.title}</h3>
                   </div>
                   <p className="text-white/80 mb-4">{tour.description}</p>
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center text-sm">
                     <span className="text-white/60">{tour.duration}</span>
-                    <span className="text-primary font-semibold">{tour.price}</span>
                   </div>
                 </CardContent>
               </Card>

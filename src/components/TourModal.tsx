@@ -1,6 +1,8 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { useState } from 'react';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface Tour {
   title: string;
@@ -22,9 +24,12 @@ interface TourModalProps {
 }
 
 const TourModal = ({ tour, isOpen, onClose }: TourModalProps) => {
+  const [isAgreed, setIsAgreed] = useState(false);
+  
   if (!tour) return null;
 
   const handleBooking = () => {
+    if (!isAgreed) return;
     const message = `Здравствуйте! Хочу забронировать тур: ${tour.title}`;
     const whatsappUrl = `https://wa.me/79281234567?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -99,10 +104,26 @@ const TourModal = ({ tour, isOpen, onClose }: TourModalProps) => {
             </ul>
           </div>
 
+          <div className="flex items-start gap-3 bg-slate-800/30 rounded-lg p-4 mb-4">
+            <Checkbox 
+              id="privacy-agree"
+              checked={isAgreed}
+              onCheckedChange={(checked) => setIsAgreed(checked as boolean)}
+              className="mt-1"
+            />
+            <label 
+              htmlFor="privacy-agree" 
+              className="text-sm text-white/80 cursor-pointer leading-relaxed"
+            >
+              Я согласен на обработку персональных данных и принимаю условия политики конфиденциальности
+            </label>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
               onClick={handleBooking}
-              className="flex-1 h-14 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-lg font-semibold"
+              disabled={!isAgreed}
+              className="flex-1 h-14 bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Icon name="MessageCircle" size={24} className="mr-2" />
               Забронировать в WhatsApp
